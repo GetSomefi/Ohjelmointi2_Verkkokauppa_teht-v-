@@ -1,22 +1,11 @@
-﻿
+﻿namespace Interface;
 
-namespace Interface;
-
-//ideana on tehdä yksinkertainen verkkokauppa tuote, joka voi olla digitaalinen tai fyysinen
-//erona on, että toinen lähtee sähköpostilla ja toinen postitetaan
-//esimerkki perustuu: https://www.youtube.com/watch?v=A7qwuFnyIpM
-
-//kaikki interfacessa on julkista (vaikka merkkaat ominaisuudet ilman public:ia ne ovat silti public ) 
-//interfacen nimeämisessä käytetään I-kirjainta alussa (toimii ilmankin, mutta se on tapa)
 interface ITuote{
     string Nimi {get;set;}
     double Hinta {get;set;}
     string Valuutta {get;set;}
     
     int Varasto {get;set;}
-    //int varasto; //interface ei voi sisältää kenttiä (fields)
-
-    //ainoa toiminto on tuotteen lähetys (ei bodyä)
     void Laheta(Asiakas _asiakas);
 }
 
