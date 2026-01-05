@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v9.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v9.0": {
+      "Ohjelmointi2_Verkkokauppa_teht-v-/1.0.0": {
+        "runtime": {
+          "Ohjelmointi2_Verkkokauppa_teht-v-.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Ohjelmointi2_Verkkokauppa_teht-v-/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -1,0 +1,15 @@
+C:\Users\Peter\Documents\Koodaus\C#\Ohjelmointi2_Verkkokauppa_teht-v-\bin\Debug\net9.0\Ohjelmointi2_Verkkokauppa_teht-v-.exe
+C:\Users\Peter\Documents\Koodaus\C#\Ohjelmointi2_Verkkokauppa_teht-v-\bin\Debug\net9.0\Ohjelmointi2_Verkkokauppa_teht-v-.deps.json
+C:\Users\Peter\Documents\Koodaus\C#\Ohjelmointi2_Verkkokauppa_teht-v-\bin\Debug\net9.0\Ohjelmointi2_Verkkokauppa_teht-v-.runtimeconfig.json
+C:\Users\Peter\Documents\Koodaus\C#\Ohjelmointi2_Verkkokauppa_teht-v-\bin\Debug\net9.0\Ohjelmointi2_Verkkokauppa_teht-v-.dll
+C:\Users\Peter\Documents\Koodaus\C#\Ohjelmointi2_Verkkokauppa_teht-v-\bin\Debug\net9.0\Ohjelmointi2_Verkkokauppa_teht-v-.pdb
+C:\Users\Peter\Documents\Koodaus\C#\Ohjelmointi2_Verkkokauppa_teht-v-\obj\Debug\net9.0\Ohjelmointi2_Verkkokauppa_teht-v-.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Peter\Documents\Koodaus\C#\Ohjelmointi2_Verkkokauppa_teht-v-\obj\Debug\net9.0\Ohjelmointi2_Verkkokauppa_teht-v-.AssemblyInfoInputs.cache
+C:\Users\Peter\Documents\Koodaus\C#\Ohjelmointi2_Verkkokauppa_teht-v-\obj\Debug\net9.0\Ohjelmointi2_Verkkokauppa_teht-v-.AssemblyInfo.cs
+C:\Users\Peter\Documents\Koodaus\C#\Ohjelmointi2_Verkkokauppa_teht-v-\obj\Debug\net9.0\Ohjelmointi2_Verkkokauppa_teht-v-.csproj.CoreCompileInputs.cache
+C:\Users\Peter\Documents\Koodaus\C#\Ohjelmointi2_Verkkokauppa_teht-v-\obj\Debug\net9.0\Ohjelmointi2_Verkkokauppa_teht-v-.sourcelink.json
+C:\Users\Peter\Documents\Koodaus\C#\Ohjelmointi2_Verkkokauppa_teht-v-\obj\Debug\net9.0\Ohjelmointi2_Verkkokauppa_teht-v-.dll
+C:\Users\Peter\Documents\Koodaus\C#\Ohjelmointi2_Verkkokauppa_teht-v-\obj\Debug\net9.0\refint\Ohjelmointi2_Verkkokauppa_teht-v-.dll
+C:\Users\Peter\Documents\Koodaus\C#\Ohjelmointi2_Verkkokauppa_teht-v-\obj\Debug\net9.0\Ohjelmointi2_Verkkokauppa_teht-v-.pdb
+C:\Users\Peter\Documents\Koodaus\C#\Ohjelmointi2_Verkkokauppa_teht-v-\obj\Debug\net9.0\Ohjelmointi2_Verkkokauppa_teht-v-.genruntimeconfig.cache
+C:\Users\Peter\Documents\Koodaus\C#\Ohjelmointi2_Verkkokauppa_teht-v-\obj\Debug\net9.0\ref\Ohjelmointi2_Verkkokauppa_teht-v-.dll

@@ -86,34 +86,70 @@ static class UI{
             Console.WriteLine(rivi);
         }
     }
-    static void Tilaa(List<ITuote> tuotteet){
+    public static bool Tilaa(List<ITuote> tuotteet){
         double loppusumma = tuotteet.Sum(t=>t.Hinta);
         Console.Clear();
-        Console.WriteLine("----");
-        Console.WriteLine("Tilauslomake");
+        Console.WriteLine("### Tilauslomake ###");
         Console.WriteLine("Ostoskorin loppusumma: " + loppusumma);
         Console.Write("Nimi: ");
         string nimi = Console.ReadLine()!;
         Console.Write("Osoite: ");
         string osoite = Console.ReadLine()!;
-        Console.Write("Email: ");
+        Console.Write("Email (@ pakollinen merkki): ");
         string email = Console.ReadLine()!;
 
         if(nimi != "" && osoite != "" && email != "" && email.Contains('@')){
             Asiakas asiakas = new Asiakas(nimi,osoite,email);
             Kuitti(asiakas,tuotteet);
+            return true;
+        }
+        
+        return false;
+    }
 
-        }else{
-            Console.WriteLine("#######################################");
-            Console.WriteLine("Kaikki pyydetyt tiedot ovat pakollisia!");
-            Tilaa(tuotteet);
+    public static void OstaNayttoListaus(ITuote[] tuotteet, List<ITuote> ostoskori){
+        Console.WriteLine("Siirrä tuote ostoskoriin valitsemalla tuotenumero:");
+        foreach (var (item, i) in tuotteet.Select((value, index) => (value, index)))
+        {
+            Console.WriteLine($"#{i}. {item.Nimi}");
+        }
+        Console.WriteLine("100. Jatka ->");
+
+        if (ostoskori.Count() > 0)
+            Console.WriteLine("\nOstoskori: ");
+            
+        foreach (var item in ostoskori)
+        {
+            Console.Write(item.Nimi + " ");
         }
     }
-    static int Kassa(string action){
+
+    public static bool OstaNayttoValinta(ITuote[] tuotteet, List<ITuote> ostoskori){
+        try //try epäonnistuu jos käyttäjä syöttää jotain muuta kuin numeron
+        {
+            Console.Write("\nValinta: ");
+            int valinta = int.Parse(Console.ReadLine()!);
+
+            if(valinta == 100) return false; //jos käyttäjä haluaa jatkaa ostoksia
+
+            ostoskori.Add(tuotteet[valinta]);
+            Console.Clear();
+            Console.WriteLine($"### Tuote [{tuotteet[valinta].Nimi}] lisätty ostoskoriin. ###");
+        }
+        catch (Exception)
+        {
+            Console.Clear();
+            Console.WriteLine("### Virheellinen valinta! ###");
+        }
+        return true;
+    }
+
+    public static int TuoteLisattyMitaSeuraavaksi(){
         int valinta = 0;
         try
         {
-            Console.WriteLine("----");
+            Console.Clear();
+            Console.WriteLine("Valitse seuraava vaihe:");
             Console.WriteLine("1. Jatka ostoksia");
             Console.WriteLine("2. Poista tuote ostoskorista (Tehtävä: rakenna tämä ominaisuus)");
             Console.WriteLine("3. Tilaa tuotteet");
@@ -122,21 +158,11 @@ static class UI{
             valinta = int.Parse(Console.ReadLine()!);
         }catch{
             Console.WriteLine("Virhe!");
-            UI.Prompti(action);
         }
+        
         return valinta;
     }
-    public static int Prompti(string action, List<ITuote>? tuotteet = null ){
-        int valinta = 0;
-        switch (action)
-        {
-            case "kassalle": valinta = Kassa(action); break;
-            case "maksa": Tilaa(tuotteet!); break;
-            case "poista": Poista(tuotteet!); break;
-            default: valinta = Kassa(action); break;
-        }
-        return valinta;
-    }
+
 }
 
 class Program
@@ -149,61 +175,49 @@ class Program
         FyysinenTuote tuote3 = new FyysinenTuote("Sakset", 5, "euro", 2);
         LadattavaTuote tuote4 = new LadattavaTuote("Aktivointikoodi (Win XP)", 49, "euro", 2, 12300094);
 
-        ITuote[] tuotteet = new ITuote[] {tuote1,tuote2,tuote3,tuote4};
-        
+        ITuote[] tuotteet = new ITuote[] { tuote1, tuote2, tuote3, tuote4 };
+
+        bool UIactive = true;
+
         Console.Clear();
         Console.WriteLine("--Verkkokauppa 4000---");
-        Console.WriteLine("Valitse tuotenumero");
-        foreach (var (item,i) in tuotteet.Select((value, index) => (value, index)))
+
+        while (UIactive)
         {
-            Console.WriteLine($"#{i}. {item.Nimi}");
-        }
+            UI.OstaNayttoListaus(tuotteet, ostoskori); //listaa tuotteet
+            if (!UI.OstaNayttoValinta(tuotteet, ostoskori)){ //lisää tuote ostoskoriin ja näytä viesti
+                Console.WriteLine("jatko");
+                int valinta = UI.TuoteLisattyMitaSeuraavaksi(); //mitä seuraavaksi
 
-        if(ostoskori.Count() > 0)
-            Console.WriteLine("\nOstoskori: ");
-            foreach (var item in ostoskori)
-            {
-                Console.Write(item.Nimi + " ");
-            }
-
-        try
-        {
-            Console.Write("\nValinta: ");
-            int valinta = int.Parse(Console.ReadLine()!);
-            ostoskori.Add(tuotteet[valinta]);
-
-            Console.Clear();
-            Console.WriteLine($"Tuote [{tuotteet[valinta].Nimi}] lisätty ostoskoriin.");
-            Console.WriteLine("\nOstoskori: ");
-            foreach (var item in ostoskori)
-            {
-                Console.WriteLine(item.Nimi + " ");
-            }
-
-            int promptiValinta = UI.Prompti("kassalle");
-
-            switch (promptiValinta)
-            {
-                case 0: 
-                    Console.WriteLine("Poistutaan...");
-                    Environment.Exit(0);
-                    break;
-                case 1: Main(new string[]{}); break;
-                case 2: 
-                    Console.WriteLine("Rakenna tämä ominaisuus"); 
-                    UI.Prompti("poista",ostoskori);
-                    break;
-                case 3: 
-                    Console.WriteLine("Tämä ominaisuus on vajaavainen: KORJAA"); 
-                    UI.Prompti("maksa",ostoskori);
-                    break;
-                default: Main(new string[]{}); break;
+                switch (valinta)
+                {
+                    case 1: //jatka ostoksia
+                        Console.Clear();
+                        break;
+                    case 2: //poista tuote ostoskorista
+                        Console.Clear();
+                        Console.WriteLine("Tämä ominaisuus ei ole vielä käytössä.");
+                        break;
+                    case 3: //tilaa tuotteet
+                        if( UI.Tilaa(ostoskori) ){
+                            UIactive = false;
+                        }else{
+                            Console.Clear();
+                            Console.WriteLine("### Tilaus epäonnistui. Täytä tiedot oikein. ###");
+                        }
+                        
+                        break;
+                    case 0: //poistu kaupasta
+                        UIactive = false;
+                        break;
+                    default:
+                        Console.Clear();
+                        Console.WriteLine("Virheellinen valinta!");
+                        break;
+                }
             }
         }
-        catch (Exception e)
-        {
-           Console.WriteLine("Virhe " + e.Message);
-           Main(new string[]{});
-        }
+        Console.WriteLine("Kiitos käynnistä!");
+
     }
 }
