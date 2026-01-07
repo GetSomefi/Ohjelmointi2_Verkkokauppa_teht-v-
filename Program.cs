@@ -86,6 +86,7 @@ static class UI{
             Console.WriteLine(rivi);
         }
     }
+
     public static bool Tilaa(List<ITuote> tuotteet){
         double loppusumma = tuotteet.Sum(t=>t.Hinta);
         Console.Clear();
